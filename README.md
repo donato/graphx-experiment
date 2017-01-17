@@ -1,0 +1,5 @@
+To launch cluster run
+
+```sh
+aws emr create-cluster --auto-scaling-role EMR_AutoScaling_DefaultRole --applications Name=Hadoop Name=Spark Name=Zeppelin --tags 'LTV-Owner=donato' 'CostCenter=Analytics' 'Application=Development' 'Name=Development' --ec2-attributes '{"KeyName":"donato-dev-2","InstanceProfile":"EMR_EC2_DefaultRole","SubnetId":"subnet-0ed79326","EmrManagedSlaveSecurityGroup":"sg-a4c57ec1","EmrManagedMasterSecurityGroup":"sg-03c57e66"}' --service-role EMR_DefaultRole --enable-debugging --release-label emr-5.2.1 --log-uri 's3n://aws-logs-641594772714-us-east-1/elasticmapreduce/' --name 'Donato-Dev' --instance-groups '[{"InstanceCount":2,"InstanceGroupType":"CORE","InstanceType":"m3.xlarge","Name":"Core - 2"},{"InstanceCount":1,"InstanceGroupType":"MASTER","InstanceType":"m3.xlarge","Name":"Master - 1"}]' --scale-down-behavior TERMINATE_AT_INSTANCE_HOUR --region us-east-1
+```
